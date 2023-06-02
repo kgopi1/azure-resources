@@ -8,8 +8,8 @@ on:
   pull_request:
     branches: [ "main" ]
 
-permissions:
-  repository-projects: write
+permissions: write-all
+  #repository-projects: write
 
 jobs:
   test_job:
