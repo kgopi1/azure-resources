@@ -1,8 +1,5 @@
 name: azure-resources
 
-env:
-  TEST_ENV: "Test123"
-
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
@@ -16,6 +13,7 @@ env:
   ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
   ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
   ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+  TEST_ENV: "Test123"
 
 jobs:
 ## repo creation job
@@ -62,7 +60,6 @@ jobs:
     - name: terraform-apply
       run: terraform apply --auto-approve
       working-directory: infra
-
 ## Build job:
 
   build_appcode_job:
