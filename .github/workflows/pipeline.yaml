@@ -14,7 +14,8 @@ jobs:
     steps:
     - name: test-bash-script
       run: ls -la 
-      
+      working-directory: ${GITHUB_WORKSPACE}
+
   repo_creation_job:
     runs-on: ubuntu-latest
     steps:
