@@ -23,6 +23,9 @@ jobs:
     needs: [test_job]
     runs-on: ubuntu-latest
     steps:
+    - name: repo_checkout
+      uses: actions/checkout@v3
+    
     - name: repo_creation_script
       run: bash ${GITHUB_WORKSPACE}/scripts/github_repo.sh $repoName
     env:
