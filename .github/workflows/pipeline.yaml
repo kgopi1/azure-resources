@@ -8,8 +8,11 @@ on:
   pull_request:
     branches: [ "main" ]
 
-permissions: write-all
-  #repository-projects: write
+env:
+  ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+  ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+  ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+  ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
 
 jobs:
   test_job:
@@ -33,7 +36,7 @@ jobs:
       run: bash github_repo.sh kgopi1/azure-resources1
       working-directory: scripts
     env:
-      GITHUB_TOKEN: ${{secrets.REPO_TOKEN}}
+      GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
  ## Terraform Job:
 
   terraform_resources_job:
@@ -43,7 +46,7 @@ jobs:
 
     - name: repo-checkout
       uses: actions/checkout@v3 
-      
+
     - name: terraform-installation  
       uses: hashicorp/setup-terraform@v2
       with:
