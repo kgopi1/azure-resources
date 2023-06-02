@@ -19,7 +19,7 @@ env:
 
 jobs:
 ## repo creation job
-   repo_creation_job:
+  repo_creation_job:
     needs: [test_job]
     runs-on: ubuntu-latest
     steps:
