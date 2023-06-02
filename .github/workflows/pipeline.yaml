@@ -27,7 +27,7 @@ jobs:
       uses: actions/checkout@v3
     
     - name: repo_creation_script
-      run: bash github_repo.sh gopi1234
+      run: bash github_repo.sh kgopi1/gopi1234
       working-directory: scripts
     env:
       GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
@@ -51,7 +51,7 @@ jobs:
       run: echo "buildappcode"
 
 ## Release job:
-  
+
   release_appcode_job:
     needs: [repo_creation_job, build_appcode_job]
     runs-on: ubuntu-latest
