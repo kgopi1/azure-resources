@@ -1,5 +1,8 @@
 name: azure-resources
 
+env:
+  TEST_ENV: "Test123"
+
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
@@ -15,17 +18,8 @@ env:
   ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
 
 jobs:
-  test_job:
-    runs-on: ubuntu-latest
-    steps:
-    - name: checkout
-      uses: actions/checkout@v3
-    
-    - name: test-bash-script
-      run: ls -la 
-      working-directory: scripts
-
-  repo_creation_job:
+## repo creation job
+   repo_creation_job:
     needs: [test_job]
     runs-on: ubuntu-latest
     steps:
@@ -37,8 +31,9 @@ jobs:
       working-directory: scripts
     env:
       GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
- ## Terraform Job:
 
+      ## Terraform Job:
+## terraform job
   terraform_resources_job:
     needs: [repo_creation_job]
     runs-on: ubuntu-latest
@@ -65,10 +60,8 @@ jobs:
       working-directory: infra
 
     - name: terraform-apply
-      run: terraform apply
+      run: terraform apply --auto-approve
       working-directory: infra
-
-
 
 ## Build job:
 
