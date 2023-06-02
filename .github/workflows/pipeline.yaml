@@ -40,6 +40,10 @@ jobs:
     needs: [repo_creation_job]
     runs-on: ubuntu-latest
     steps:
+
+    - name: repo-checkout
+      uses: actions/checkout@v3 
+      
     - name: terraform-installation  
       uses: hashicorp/setup-terraform@v2
       with:
