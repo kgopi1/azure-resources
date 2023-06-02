@@ -8,6 +8,7 @@ gh_repo_create() {
             echo "gh repo needs to created"
             gh repo create $repoName --public 
         else
+          gh repo view $repoName
            echo "repo exists github already "
         fi
 }
