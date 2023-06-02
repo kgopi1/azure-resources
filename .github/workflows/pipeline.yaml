@@ -40,19 +40,27 @@ jobs:
     needs: [repo_creation_job]
     runs-on: ubuntu-latest
     steps:
-    - name: terraform_init
-      uses: kgopi1/tf_templates/.github/workflows/terraform_action.yaml@main
-      secrets: inherit
+    - name: terraform-installation  
+      uses: hashicorp/setup-terraform@v2
       with:
-        action: init
-        working_dir: infra
+        terraform_version: 1.1.7
 
-    - name: terraform_init
-      uses: kgopi1/tf_templates/.github/workflows/terraform_action.yaml@main
-      secrets: inherit
-      with:
-        action: plan
-        working_dir: infra
+    - name: get-tf-version
+      run: |
+        terraform --version
+
+    - name: terraform-init
+      run: terraform init
+      working-directory: infra
+  
+    - name: terraform-plan
+      run: terraform plan
+      working-directory: infra
+
+    - name: terraform-apply
+      run: terraform apply
+      working-directory: infra
+
 
 
 ## Build job:
