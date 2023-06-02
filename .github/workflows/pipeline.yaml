@@ -16,6 +16,11 @@ env:
   TEST_ENV: "Test123"
 
 jobs:
+  test_job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: test_job
+      run: echo "test job"
 ## repo creation job
   repo_creation_job:
     needs: [test_job]
@@ -61,7 +66,6 @@ jobs:
       run: terraform apply --auto-approve
       working-directory: infra
 ## Build job:
-
   build_appcode_job:
     needs: [repo_creation_job]
     runs-on: ubuntu-latest
@@ -77,6 +81,4 @@ jobs:
     steps:
     - name: release_appcode
       run: echo "release app code"
-
-
 
