@@ -16,9 +16,21 @@ jobs:
       run: bash ${GITHUB_WORKSPACE}/scripts/github_repo.sh $repoName
     env:
       GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-  Terraform_resources_job:
+  terraform_resources_job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: terraform_init
+      run: echo "Hello Terraform init"
   build_appcode_job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: build_appcode
+      run: echo "buildappcode"
   release_appcode_job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: release_appcode
+      run: echo "release app code"
 
 
 
