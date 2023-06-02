@@ -33,7 +33,7 @@ jobs:
       run: bash github_repo.sh kgopi1/azure-resources1
       working-directory: scripts
     env:
-      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      GITHUB_TOKEN: ${{secrets.REPO_TOKEN}}
  ## Terraform Job:
 
   terraform_resources_job:
