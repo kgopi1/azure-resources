@@ -41,7 +41,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: terraform_init
-      run: echo "Hello Terraform init"
+      uses: kgopi1/tf_templates/.github/workflows/terraform_action.yaml@main
+      secrets: inherit
+      with:
+        action: init
+        working_dir: infra
+
+    - name: terraform_init
+      uses: kgopi1/tf_templates/.github/workflows/terraform_action.yaml@main
+      secrets: inherit
+      with:
+        action: plan
+        working_dir: infra
 
 
 ## Build job:

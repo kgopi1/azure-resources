@@ -1,4 +1,12 @@
 ## gihub repo create 
+#! /bin/bash
+
+####################
+# Script to create repository in github using github cli
+# 1. login into github using token 
+# 2. Check the repo to be created
+# 3. if repo didnt exists , it creates repo
+##################
 
 
 gh_repo_create() {
@@ -21,21 +29,10 @@ gh_login() {
     else
         echo "gh login required"
         gh auth login --with-token 
-        #gh auth login --with-token <token.txt
     fi
     
 }
 
-# az_login() {
-#     az_login_status=$(az account show)
-#     if [ $? == 0 ]; then
-#         echo "logged in"
-#     else
-#         echo "az login required"
-#         az login --use-device-code
-#     fi
-    
-# }
 
 # main
 repoName=$1
