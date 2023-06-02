@@ -1,4 +1,4 @@
-name: CI
+name: azure-resources
 
 # Controls when the workflow will run
 on:
@@ -9,6 +9,12 @@ on:
     branches: [ "main" ]
 
 jobs:
+  test_job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: test-bash-script
+      run: ls -la 
+      
   repo_creation_job:
     runs-on: ubuntu-latest
     steps:
