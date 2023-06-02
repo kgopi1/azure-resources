@@ -3,18 +3,13 @@
 
 gh_repo_create() {
     # check repo exist
-    check_gh_repo(){
-        gh repo view gopi123
         check_repo=$(gh repo view $repoName)
         if [ $? != 0 ]; then # if repo doesnt exist. 
-             echo "gh repo needs to created"
+            echo "gh repo needs to created"
             gh repo create $repoName --public 
         else
            echo "repo exists github already "
         fi
-    }
-    check_gh_repo
-
 }
 
 
