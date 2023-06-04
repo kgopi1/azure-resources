@@ -29,12 +29,12 @@ jobs:
 
         - name: terraform-init
           run: terraform init
-          working-directory: infra
+          working-directory: ${{inputs.working_directory}}
   
         - name: terraform-plan
           run: terraform plan
-          working-directory: infra
+          working-directory: ${{inputs.working_directory}}
 
         - name: terraform-apply
           run: terraform apply --auto-approve
-          working-directory: infra
+          working-directory: ${{inputs.working_directory}}
