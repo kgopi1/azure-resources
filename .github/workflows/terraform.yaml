@@ -1,0 +1,40 @@
+name: terraform-action
+
+on: 
+    workflow_call:
+        inputs:
+            working_directory:
+                type: string
+                default: infra2
+                required: true
+
+    
+
+
+jobs:
+    terraform-action-job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: repo-checkout
+          uses: actions/checkout@v3 
+
+        - name: terraform-installation  
+          uses: hashicorp/setup-terraform@v2
+          with:
+            terraform_version: 1.1.7
+
+        - name: get-tf-version
+          run: |
+            terraform --version
+
+        - name: terraform-init
+          run: terraform init
+          working-directory: infra
+  
+        - name: terraform-plan
+          run: terraform plan
+          working-directory: infra
+
+        - name: terraform-apply
+          run: terraform apply --auto-approve
+          working-directory: infra
