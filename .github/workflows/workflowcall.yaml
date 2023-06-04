@@ -1,7 +1,7 @@
 name: workflow_call_sample
 
 on:
-    worflow_call:
+    workflow_call:
         inputs:
             REPO_NAME:
                 type: string
