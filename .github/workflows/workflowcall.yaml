@@ -1,7 +1,7 @@
-name: workflow_call_sample
+name: workflow_dispatch-triggger
 
 on:
-    workflow_call:
+    workflow_dispatch:
         inputs:
             REPO_NAME:
                 type: string
