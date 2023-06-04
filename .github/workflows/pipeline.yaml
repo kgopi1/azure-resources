@@ -26,7 +26,7 @@ jobs:
     - name: repo_checkout
       uses: actions/checkout@v3
     
-    - name: repo_creation_script
+    - name: repo_creation
       run: bash github_repo.sh ${{inputs.REPO_NAME}}
       working-directory: scripts
     env:
