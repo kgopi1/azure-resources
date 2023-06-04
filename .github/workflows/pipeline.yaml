@@ -8,6 +8,9 @@ on:
         type: string
         default: gopi123
         required: true
+      TF_DIR:
+        type: string
+        default: .
 
 env:
   ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
@@ -35,7 +38,7 @@ jobs:
     needs: [repo_creation_job]
     uses:  kgopi1/azure-resources/.github/workflows/terraform.yaml@gopi123
     with:
-      working_directory: infra
+      working_directory: ${{inputs.TF_DIR}}
 
 
 
