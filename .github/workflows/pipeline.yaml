@@ -8,8 +8,9 @@ on:
         type: string
         default: gopi123
         required: true
-
-
+      TF_DIR:
+        type: string
+        default: .
 
 env:
   ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
@@ -35,32 +36,12 @@ jobs:
 ## terraform job
   terraform_resources_job:
     needs: [repo_creation_job]
-    runs-on: ubuntu-latest
-    steps:
+    uses:  kgopi1/azure-resources/.github/workflows/terraform.yaml@gopi123
+    with:
+      working_directory: ${{inputs.TF_DIR}}
 
-    - name: repo-checkout
-      uses: actions/checkout@v3 
 
-    - name: terraform-installation  
-      uses: hashicorp/setup-terraform@v2
-      with:
-        terraform_version: 1.1.7
 
-    - name: get-tf-version
-      run: |
-        terraform --version
-
-    - name: terraform-init
-      run: terraform init
-      working-directory: infra
-  
-    - name: terraform-plan
-      run: terraform plan
-      working-directory: infra
-
-    - name: terraform-apply
-      run: terraform apply --auto-approve
-      working-directory: infra
 ## Build job:
   build_appcode_job:
     needs: [repo_creation_job]
