@@ -8,9 +8,11 @@ on:
         type: string
         default: gopi123
         required: true
+        description: Repo to be created
       TF_DIR:
         type: string
         default: .
+        description: Terraform Directory
 
 env:
   ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
